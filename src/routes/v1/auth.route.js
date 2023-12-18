@@ -1,13 +1,13 @@
 const express = require('express')
 const router = express.Router()
-const { login, verifyEmail, forgetPassword, resetPassword } = require('../../controller/auth.controller')
+const { register, login, verifyEmail, forgetPin, forgetPassword, resetPassword } = require('../../controller/auth.controller')
 
 /**
  * @swagger
  * /api/v1/auth/register:
  *   post:
  *     tags:
- *      - "User"
+ *      - "Auth"
  *     summary: example to register
  *     requestBody:
  *        required: true
@@ -38,7 +38,7 @@ router.post('/auth/register', register)
 
 /**
  * @swagger
- * /api/v2/auth/login:
+ * /api/v1/auth/login:
  *   post:
  *     tags:
  *      - "Auth"
@@ -50,7 +50,7 @@ router.post('/auth/register', register)
  *            schema:
  *              type: object
  *              properties:
- *                :
+ *                emailOrUsername:
  *                  type: string
  *                pin:
  *                  type: integer
@@ -64,12 +64,82 @@ router.post('/auth/login', login)
 
 router.get('/auth/verify-email', verifyEmail)
 
+/**
+ * @swagger
+ * /api/v1/auth/forget-pin:
+ *   put:
+ *     tags:
+ *      - "Auth"
+ *     summary: example to reset pin
+ *     requestBody:
+ *        required: true
+ *        content:
+ *          multipart/form-data:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                emailOrUsername:
+ *                  type: string
+ *                password:
+ *                  type: string
+ *                newPin:
+ *                  type: integer
+ *     responses:
+ *       200:
+ *         description: Successful response
+ *       400:
+ *         description: Bad request
+ */
+router.put('/auth/forget-pin', forgetPin)
+
+/**
+ * @swagger
+ * /api/v1/auth/forget-password:
+ *   post:
+ *     tags:
+ *      - "Auth"
+ *     summary: example to forget password
+ *     requestBody:
+ *        required: true
+ *        content:
+ *          multipart/form-data:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                emailOrUsername:
+ *                  type: string
+ *     responses:
+ *       200:
+ *         description: Successful response
+ *       400:
+ *         description: Bad request
+ */
 router.post('/auth/forget-password', forgetPassword)
 
-router.get("/auth/reset-password", (res) => {
-    res.render("reset-password.ejs")
-})
-
+/**
+ * @swagger
+ * /api/v1/auth/reset-password:
+ *   put:
+ *     tags:
+ *      - "Auth"
+ *     summary: example to reset password
+ *     requestBody:
+ *        required: true
+ *        content:
+ *          multipart/form-data:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                token:
+ *                  type: string
+ *                newPassword:
+ *                  type: string
+ *     responses:
+ *       200:
+ *         description: Successful response
+ *       400:
+ *         description: Bad request
+ */
 router.put('/auth/reset-password', resetPassword)
 
 module.exports = router
