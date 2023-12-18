@@ -28,8 +28,7 @@ const swaggerDefinition = {
         }
     },
     apis: [
-        './routes/v1/auth.route.js',
-        './routes/v1/user.route.js',
+        './src/routes/v1/auth.route.js',
     ],
 
 }
