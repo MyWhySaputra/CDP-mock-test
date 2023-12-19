@@ -1,4 +1,4 @@
-const { ComparePassword } = require('../helper/hash_pass_helper')
+const { HashPassword, ComparePassword } = require('../helper/hash_pass_helper')
 const { ResponseTemplate } = require('../helper/template.helper')
 const { PrismaClient } = require('@prisma/client')
 
@@ -85,7 +85,7 @@ async function login(req, res) {
     try {
         const { emailOrUsername, pin } = req.body
 
-        const checkUser = await prisma.user.findUnique({
+        const checkUser = await prisma.user.findFirst({
             where: {
                 OR: [
                     { email: emailOrUsername },
@@ -160,7 +160,7 @@ async function forgetPin(req, res) {
 
     try {
 
-        const checkUser = await prisma.user.findUnique({
+        const checkUser = await prisma.user.findFirst({
             where: {
                 OR: [
                     { email: emailOrUsername },
@@ -192,7 +192,7 @@ async function forgetPin(req, res) {
             },
         })
 
-        let resp = ResponseTemplate(null, 'check your email', null, 200)
+        let resp = ResponseTemplate(null, 'Your pin has been changed', null, 200)
         res.status(200).json(resp);
         return
 
@@ -210,7 +210,7 @@ async function forgetPassword(req, res) {
 
     try {
 
-        const checkUser = await prisma.user.findUnique({
+        const checkUser = await prisma.user.findFirst({
             where: {
                 OR: [
                     { email: emailOrUsername },
@@ -233,7 +233,7 @@ async function forgetPassword(req, res) {
 
         await transporter.sendMail({
             from: process.env.EMAIL_SMTP, 
-            to: email, 
+            to: checkUser.email, 
             subject: "Reset your password",
             html: `Copy your token = ${token}`,
         })
@@ -244,7 +244,6 @@ async function forgetPassword(req, res) {
 
     } catch (error) {
         let resp = ResponseTemplate(null, 'internal server error', error, 500)
-        Sentry.captureException(error)
         res.status(500).json(resp)
         return
     }

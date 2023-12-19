@@ -12,7 +12,7 @@ const { register, login, verifyEmail, forgetPin, forgetPassword, resetPassword }
  *     requestBody:
  *        required: true
  *        content:
- *          multipart/form-data:
+ *          application/json:
  *            schema:
  *              type: object
  *              properties:
@@ -25,7 +25,7 @@ const { register, login, verifyEmail, forgetPin, forgetPassword, resetPassword }
  *                password:
  *                  type: string
  *                pin:
- *                  type: integer
+ *                  type: string
  *     responses:
  *       200:
  *         description: Successful response
@@ -46,14 +46,14 @@ router.post('/auth/register', register)
  *     requestBody:
  *        required: true
  *        content:
- *          multipart/form-data:
+ *          application/json:
  *            schema:
  *              type: object
  *              properties:
  *                emailOrUsername:
  *                  type: string
  *                pin:
- *                  type: integer
+ *                  type: string
  *     responses:
  *       200:
  *         description: Successful response
@@ -74,7 +74,7 @@ router.get('/auth/verify-email', verifyEmail)
  *     requestBody:
  *        required: true
  *        content:
- *          multipart/form-data:
+ *          application/json:
  *            schema:
  *              type: object
  *              properties:
@@ -83,7 +83,7 @@ router.get('/auth/verify-email', verifyEmail)
  *                password:
  *                  type: string
  *                newPin:
- *                  type: integer
+ *                  type: string
  *     responses:
  *       200:
  *         description: Successful response
@@ -102,7 +102,7 @@ router.put('/auth/forget-pin', forgetPin)
  *     requestBody:
  *        required: true
  *        content:
- *          multipart/form-data:
+ *          application/json:
  *            schema:
  *              type: object
  *              properties:
@@ -126,7 +126,7 @@ router.post('/auth/forget-password', forgetPassword)
  *     requestBody:
  *        required: true
  *        content:
- *          multipart/form-data:
+ *          application/json:
  *            schema:
  *              type: object
  *              properties:
