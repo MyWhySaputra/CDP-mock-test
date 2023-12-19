@@ -2,7 +2,7 @@ const swaggerDefinition = {
     swaggerDefinition: {
         openapi: '3.0.0',
         info: {
-            title: 'Testing FGA Issue',
+            title: 'CDP-Mock-Test',
             version: '1.0.0',
             description: 'Your API description',
         },
