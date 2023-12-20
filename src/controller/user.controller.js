@@ -1,6 +1,7 @@
-const { PrismaClient } = require("@prisma/client");
-const prisma = new PrismaClient();
-const { ResponseTemplate } = require("../helper/template_helper");
+const { ResponseTemplate } = require("../helper/template_helper")
+const { PrismaClient } = require("@prisma/client")
+
+const prisma = new PrismaClient()
 
 async function createTask(req, res) {
     let { title } = req.body
