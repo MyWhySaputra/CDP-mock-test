@@ -7,7 +7,7 @@ async function createTask(req, res) {
     let { title } = req.body
 
     try {
-        const todo = await prisma.task.create({
+        const data = await prisma.task.create({
         data: {
             title: title,
             completed: false,
@@ -15,7 +15,7 @@ async function createTask(req, res) {
         },
         })
 
-        let resp = ResponseTemplate(todo, "create title success", null, 200);
+        let resp = ResponseTemplate(data, "create title success", null, 200);
         res.status(200).json(resp);
         return
 
@@ -29,13 +29,13 @@ async function createTask(req, res) {
 async function getTasks(req, res) {
 
     try {
-        const todos = await prisma.task.findMany({
+        const data = await prisma.task.findMany({
         where: {
             userId: req.user.id,
             deleted_at: null,
         },
         })
-        let resp = ResponseTemplate(todos, "get todos success", null, 200)
+        let resp = ResponseTemplate(data, "get datas success", null, 200)
         res.status(200).json(resp)
         return
 
@@ -51,7 +51,7 @@ async function updateTitleTask(req, res) {
     let { id , title } = req.body
     
     try {
-        const todo = await prisma.task.update({
+        const data = await prisma.task.update({
         where: {
             id: parseInt(id),
         },
@@ -59,7 +59,7 @@ async function updateTitleTask(req, res) {
             title: title,
         },
         })
-        let resp = ResponseTemplate(todo, "update title success", null, 200)
+        let resp = ResponseTemplate(data, "update title success", null, 200)
         res.status(200).json(resp)
         return
 
@@ -75,7 +75,7 @@ async function updateStatusTask(req, res) {
     let { id } = req.body
 
     try {
-        const todo = await prisma.task.update({
+        const data = await prisma.task.update({
         where: {
             id: parseInt(id),
         },
@@ -83,7 +83,7 @@ async function updateStatusTask(req, res) {
             completed: true,
         },
         });
-        let resp = ResponseTemplate(todo, "update status success", null, 200);
+        let resp = ResponseTemplate(data, "update status success", null, 200);
         res.status(200).json(resp);
         return;
 
@@ -98,7 +98,7 @@ async function deleteTask(req, res) {
     let { id } = req.body
 
     try {
-        const todo = await prisma.task.update({
+        const data = await prisma.task.update({
         where: {
             id: parseInt(id),
         },
@@ -106,7 +106,7 @@ async function deleteTask(req, res) {
             deleted_at: new Date(),
         }
         });
-        let resp = ResponseTemplate(todo, "delete success", null, 200);
+        let resp = ResponseTemplate(data, "delete success", null, 200);
         res.status(200).json(resp);
         return;
     } catch (error) {
