@@ -21,4 +21,16 @@ model user {
   createAt    DateTime  @default(now())
   updateAt    DateTime? @default(now())
   deletedAt   DateTime?
+  tasks      Task[]
+}
+
+model Task {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  title      String
+  completed  Boolean
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime?
+  user       user     @relation(fields: [userId], references: [id])
 }
