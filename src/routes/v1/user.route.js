@@ -4,13 +4,13 @@ const { Auth } = require("../../middleware/middleware");
 
 /**
  * @swagger
- * /todo/create:
+ * /user/create:
  *   post:
  *     security:
  *       - bearerAuth: []
  *     tags:
- *       - "Todo"
- *     summary: Example to create Todo
+ *       - "User"
+ *     summary: Example to create user
  *     requestBody:
  *       required: true
  *       content:
@@ -20,8 +20,6 @@ const { Auth } = require("../../middleware/middleware");
  *             properties:
  *               title:
  *                 type: string
- *               completed:
- *                 type: boolean
  *     responses:
  *       200:
  *         description: Successful response
@@ -32,17 +30,17 @@ const { Auth } = require("../../middleware/middleware");
  *       500:
  *         description: Internal Server Error
  */
-router.post("/create", Auth, createTask)
+router.post("/user/create", Auth, createTask)
 
 /**
  * @swagger
- * /todo:
+ * /user:
  *   get:
  *     security:
  *       - bearerAuth: []
  *     tags:
- *       - "Todo"
- *     summary: Example to get Todo
+ *       - "User"
+ *     summary: Example to get user
  *     responses:
  *       200:
  *         description: Successful response
@@ -53,17 +51,17 @@ router.post("/create", Auth, createTask)
  *       500:
  *         description: Internal Server Error
  */
-router.get("/", Auth, getTasks)
+router.get("/user/", Auth, getTasks)
 
 /**
  * @swagger
- * /todo/updateTitle:
+ * /user/updateTitle:
  *   put:
  *     security:
  *       - bearerAuth: []
  *     tags:
- *       - "Todo"
- *     summary: Example to ypdateTitle Todo
+ *       - "User"
+ *     summary: Example to ypdateTitle user
  *     requestBody:
  *       required: true
  *       content:
@@ -85,17 +83,17 @@ router.get("/", Auth, getTasks)
  *       500:
  *         description: Internal Server Error
  */
-router.put("/updateTitle", Auth, updateTitleTask)
+router.put("/user/updateTitle", Auth, updateTitleTask)
 
 /**
  * @swagger
- * /todo/updateStatus:
+ * /user/updateStatus:
  *   put:
  *     security:
  *       - bearerAuth: []
  *     tags:
- *       - "Todo"
- *     summary: Example to ypdateTitle Todo
+ *       - "User"
+ *     summary: Example to ypdateTitle user
  *     requestBody:
  *       required: true
  *       content:
@@ -115,17 +113,17 @@ router.put("/updateTitle", Auth, updateTitleTask)
  *       500:
  *         description: Internal Server Error
  */
-router.put("/updateStatus", Auth, updateStatusTask)
+router.put("/user/updateStatus", Auth, updateStatusTask)
 
 /**
  * @swagger
- * /todo/delete:
+ * /user/delete:
  *   delete:
  *     security:
  *       - bearerAuth: []
  *     tags:
- *       - "Todo"
- *     summary: Example to ypdateTitle Todo
+ *       - "User"
+ *     summary: Example to ypdateTitle user
  *     requestBody:
  *       required: true
  *       content:
@@ -145,6 +143,6 @@ router.put("/updateStatus", Auth, updateStatusTask)
  *       500:
  *         description: Internal Server Error
  */
-router.delete("/delete", Auth, deleteTask)
+router.delete("/user/delete", Auth, deleteTask)
 
 module.exports = router
