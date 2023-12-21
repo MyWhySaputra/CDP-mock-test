@@ -10,7 +10,7 @@ const { Auth } = require("../../middleware/middleware");
  *       - bearerAuth: []
  *     tags:
  *       - "User"
- *     summary: Example to create user
+ *     summary: Example to create task
  *     requestBody:
  *       required: true
  *       content:
@@ -40,7 +40,7 @@ router.post("/user/create", Auth, createTask)
  *       - bearerAuth: []
  *     tags:
  *       - "User"
- *     summary: Example to get user
+ *     summary: Example to get task
  *     responses:
  *       200:
  *         description: Successful response
@@ -61,7 +61,7 @@ router.get("/user/", Auth, getTasks)
  *       - bearerAuth: []
  *     tags:
  *       - "User"
- *     summary: Example to ypdateTitle user
+ *     summary: Example to update title task
  *     requestBody:
  *       required: true
  *       content:
@@ -93,7 +93,7 @@ router.put("/user/updateTitle", Auth, updateTitleTask)
  *       - bearerAuth: []
  *     tags:
  *       - "User"
- *     summary: Example to ypdateTitle user
+ *     summary: Example to update status task
  *     requestBody:
  *       required: true
  *       content:
@@ -123,7 +123,7 @@ router.put("/user/updateStatus", Auth, updateStatusTask)
  *       - bearerAuth: []
  *     tags:
  *       - "User"
- *     summary: Example to ypdateTitle user
+ *     summary: Example to delete task
  *     requestBody:
  *       required: true
  *       content:
