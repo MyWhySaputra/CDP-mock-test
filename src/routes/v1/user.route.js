@@ -51,7 +51,7 @@ router.post("/user/create", Auth, createTask)
  *       500:
  *         description: Internal Server Error
  */
-router.get("/user/", Auth, getTasks)
+router.get("/user", Auth, getTasks)
 
 /**
  * @swagger
