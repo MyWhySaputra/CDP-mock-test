@@ -94,93 +94,95 @@ yang telah anda buat berisi penjelasan singkat dan source code.
 5. Video demo berdurasi minimal 5 menit.
 
 ## Pengujian Endpoint di postman
-- Auth
-### register account
 
-- [x] POST http://localhost:8080/api/v1/auth/register
-      Contoh:
-      {
+- Auth
+
+      ### register account
+
+      - [x] POST http://localhost:8080/api/v1/auth/register
+            Contoh:
+            {
             "name": "nama",
             "email": "email@mail.com",
             "username": "nama22",
             "password": "password231",
             "pin": "123456"
-      }
+            }
 
-### login
+      ### login
 
-- [x] POST http://localhost:8080/api/v1/auth/login
-      Contoh:
-      {
+      - [x] POST http://localhost:8080/api/v1/auth/login
+            Contoh:
+            {
             "emailOrUsername": "email@mail.com",
             "pin": "123456"
-      }
+            }
 
-### reset pin
+      ### reset pin
 
-- [x] PUT http://localhost:8080/api/v1/auth/forget-pin
-      Contoh:
-      {
+      - [x] PUT http://localhost:8080/api/v1/auth/forget-pin
+            Contoh:
+            {
             "emailOrUsername": "email@mail.com",
             "password": "password231",
             "newPin": "123456"
-      }
+            }
 
-### forget password
+      ### forget password
 
-- [x] POST http://localhost:8080/api/v1/auth/forget-password
-      Contoh:
-      {
+      - [x] POST http://localhost:8080/api/v1/auth/forget-password
+            Contoh:
+            {
             "emailOrUsername": "email@mail.com"
-      }
+            }
 
-### reset password
+      ### reset password
 
-- [x] PUT http://localhost:8080/api/v1/auth/reset-password
-      Contoh:
-      {
+      - [x] PUT http://localhost:8080/api/v1/auth/reset-password
+            Contoh:
+            {
             "token": "string",
             "newPassword": "passnew22"
-      }
+            }
 
-- Todolist
-  ### Create
+- User
 
-  - [x] POST http://localhost:8080/api/v1/user/create
-        Contoh:
-        {
-        "title": "title"
-        }
+      ### Create task
 
-  ### Get
+      - [x] POST http://localhost:8080/api/v1/user/create
+            Contoh:
+            {
+            "title": "title"
+            }
 
-  - [x] GET http://localhost:8080/todo
+      ### Get task
 
-  ### UpdateTitle
+      - [x] GET http://localhost:8080/api/v1/user
 
-  - [x] PUT http://localhost:8080/api/v1/user/updateTitle
-        Contoh:
-        {
-        "title": "title",
-        "id": 1
-        }
+      ### UpdateTitle
 
-  ### UpdateTitle
+      - [x] PUT http://localhost:8080/api/v1/user/updateTitle
+            Contoh:
+            {
+            "title": "title",
+            "id": 1
+            }
 
-  - [x] PUT http://localhost:8080/api/v1/user/updateStatus
-        Contoh:
-        {
-        "completed": true
-        }
+      ### UpdateStatus
 
-  ### Delete
+      - [x] PUT http://localhost:8080/api/v1/user/updateStatus
+            Contoh:
+            {
+            "id": 1
+            }
 
-  - [x] DELETE http://localhost:8080/api/v1/user/delete
-        Contoh:
-        {
-        "id": 1
-        }
+      ### Delete task
 
+      - [x] DELETE http://localhost:8080/api/v1/user/delete
+            Contoh:
+            {
+            "id": 1
+            }
 
 ## Deploy in Railway
 
@@ -188,58 +190,86 @@ yang telah anda buat berisi penjelasan singkat dan source code.
 
       ### register account
 
-      - [x] POST https://cdp-mock-test-production-7724.up.railway.app/auth/register
+      - [x] POST https://cdp-mock-test-production-ddce.up.railway.app/api/v1/auth/register
             Contoh:
             {
             "name": "nama",
             "email": "email@mail.com",
-            "password": "pass",
+            "username": "nama22",
+            "password": "password231",
             "pin": "123456"
             }
 
       ### login
 
-      - [x] POST https://cdp-mock-test-production-7724.up.railway.app/auth/login
+      - [x] POST https://cdp-mock-test-production-ddce.up.railway.app/api/v1/auth/login
             Contoh:
             {
-            "identifier": "email@mail.com",
-            "pin": "pass"
+            "emailOrUsername": "email@mail.com",
+            "pin": "123456"
             }
 
+      ### reset pin
 
-- Todo
-      ### Create
+      - [x] PUT https://cdp-mock-test-production-ddce.up.railway.app/api/v1/auth/forget-pin
+            Contoh:
+            {
+            "emailOrUsername": "email@mail.com",
+            "password": "password231",
+            "newPin": "123456"
+            }
 
-      - [x] POST https://cdp-mock-test-production-7724.up.railway.app/todo/create
+      ### forget password
+
+      - [x] POST https://cdp-mock-test-production-ddce.up.railway.app/api/v1/auth/forget-password
+            Contoh:
+            {
+            "emailOrUsername": "email@mail.com"
+            }
+
+      ### reset password
+
+      - [x] PUT https://cdp-mock-test-production-ddce.up.railway.app/api/v1/auth/reset-password
+            Contoh:
+            {
+            "token": "string",
+            "newPassword": "passnew22"
+            }
+
+- User
+
+      ### Create task
+
+      - [x] POST https://cdp-mock-test-production-ddce.up.railway.app/api/v1/user/create
             Contoh:
             {
             "title": "title"
             }
 
-      ### Get
+      ### Get task
 
-      - [x] GET https://cdp-mock-test-production-7724.up.railway.app/todo
+      - [x] GET https://cdp-mock-test-production-ddce.up.railway.app/api/v1/user
 
       ### UpdateTitle
 
-      - [x] PUT https://cdp-mock-test-production-7724.up.railway.app/todo/updateTitle
+      - [x] PUT https://cdp-mock-test-production-ddce.up.railway.app/api/v1/user/updateTitle
             Contoh:
             {
             "title": "title",
             "id": 1
             }
 
-      ### UpdateTitle
+      ### UpdateStatus
 
-      - [x] PUT https://cdp-mock-test-production-7724.up.railway.app/todo/updateStatus
+      - [x] PUT https://cdp-mock-test-production-ddce.up.railway.app/api/v1/user/updateStatus
             Contoh:
             {
-            "completed": true
+            "id": 1
             }
 
       ### Delete
 
-      - [x] DELETE https://cdp-mock-test-production-7724.up.railway.app/todo/delete
+      - [x] DELETE https://cdp-mock-test-production-ddce.up.railway.app/api/v1/user/delete
             Contoh:
             {
             "id": 1

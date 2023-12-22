@@ -68,7 +68,7 @@ async function updateTitleTask(req, res) {
         res.status(500).json(resp);
         return;
     }
-};
+}
 
 async function updateStatusTask(req, res) {
 
@@ -92,7 +92,7 @@ async function updateStatusTask(req, res) {
         res.status(500).json(resp);
         return;
     }
-};
+}
 
 async function deleteTask(req, res) {
     let { id } = req.body
