@@ -4,7 +4,7 @@ const { Auth } = require("../../middleware/middleware");
 
 /**
  * @swagger
- * /user/create:
+ * /api/v1/user/create:
  *   post:
  *     security:
  *       - bearerAuth: []
@@ -34,7 +34,7 @@ router.post("/user/create", Auth, createTask)
 
 /**
  * @swagger
- * /user:
+ * /api/v1/user:
  *   get:
  *     security:
  *       - bearerAuth: []
@@ -55,7 +55,7 @@ router.get("/user/", Auth, getTasks)
 
 /**
  * @swagger
- * /user/updateTitle:
+ * /api/v1/user/updateTitle:
  *   put:
  *     security:
  *       - bearerAuth: []
@@ -87,7 +87,7 @@ router.put("/user/updateTitle", Auth, updateTitleTask)
 
 /**
  * @swagger
- * /user/updateStatus:
+ * /api/v1/user/updateStatus:
  *   put:
  *     security:
  *       - bearerAuth: []
@@ -117,7 +117,7 @@ router.put("/user/updateStatus", Auth, updateStatusTask)
 
 /**
  * @swagger
- * /user/delete:
+ * /api/v1/user/delete:
  *   delete:
  *     security:
  *       - bearerAuth: []

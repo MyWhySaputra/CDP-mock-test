@@ -95,35 +95,53 @@ yang telah anda buat berisi penjelasan singkat dan source code.
 
 ## Pengujian Endpoint di postman
 - Auth
-  ### register account
+### register account
 
-  - [x] POST http://localhost:8080/api/v1/auth/register
-        Contoh:
-        {
-        "name": "nama",
-        "email": "email@mail.com",
-        "username": "nama22",
-        "password": "password231",
-        "pin": "123456"
-        }
+- [x] POST http://localhost:8080/api/v1/auth/register
+      Contoh:
+      {
+            "name": "nama",
+            "email": "email@mail.com",
+            "username": "nama22",
+            "password": "password231",
+            "pin": "123456"
+      }
 
-  ### login
+### login
 
-  - [x] POST http://localhost:8080/api/v1/auth/login
-        Contoh:
-        {
-        "emailOrUsername": "email@mail.com",
-        "pin": "123456"
-        }
+- [x] POST http://localhost:8080/api/v1/auth/login
+      Contoh:
+      {
+            "emailOrUsername": "email@mail.com",
+            "pin": "123456"
+      }
 
-   ### login
+### reset pin
 
-  - [x] POST http://localhost:8080/auth/login
-        Contoh:
-        {
-        "emailOrUsername": "email@mail.com",
-        "pin": "123456"
-        }
+- [x] PUT http://localhost:8080/api/v1/auth/forget-pin
+      Contoh:
+      {
+            "emailOrUsername": "email@mail.com",
+            "password": "password231",
+            "newPin": "123456"
+      }
+
+### forget password
+
+- [x] POST http://localhost:8080/api/v1/auth/forget-password
+      Contoh:
+      {
+            "emailOrUsername": "email@mail.com"
+      }
+
+### reset password
+
+- [x] PUT http://localhost:8080/api/v1/auth/reset-password
+      Contoh:
+      {
+            "token": "string",
+            "newPassword": "passnew22"
+      }
 
 - Todolist
   ### Create
