@@ -91,34 +91,44 @@ yang telah anda buat berisi penjelasan singkat dan source code.
   - Saat user A log out, lalu ada user B login, pastikan data yang tertampil adalah data dari user B, dan apabila user A login kembali, data yang terlihat adalah data milik user A
   - Semua fitur sudah di deploy
   - Sertakan jawaban, deskripsi fitur, cara login/menggunakan aplikasi dan link website yang telah ter deploy dalam readme github
-5. Video demo berdurasi minilam 5 menit.
+5. Video demo berdurasi minimal 5 menit.
 
 ## Pengujian Endpoint di postman
 - Auth
   ### register account
 
-  - [x] POST http://localhost:8080/auth/register
+  - [x] POST http://localhost:8080/api/v1/auth/register
         Contoh:
         {
         "name": "nama",
         "email": "email@mail.com",
-        "password": "pass",
+        "username": "nama22",
+        "password": "password231",
         "pin": "123456"
         }
 
   ### login
 
+  - [x] POST http://localhost:8080/api/v1/auth/login
+        Contoh:
+        {
+        "emailOrUsername": "email@mail.com",
+        "pin": "123456"
+        }
+
+   ### login
+
   - [x] POST http://localhost:8080/auth/login
         Contoh:
         {
-        "identifier": "email@mail.com",
-        "pin": "pass"
+        "emailOrUsername": "email@mail.com",
+        "pin": "123456"
         }
 
-- Todo
+- Todolist
   ### Create
 
-  - [x] POST http://localhost:8080/todo/create
+  - [x] POST http://localhost:8080/api/v1/user/create
         Contoh:
         {
         "title": "title"
@@ -130,7 +140,7 @@ yang telah anda buat berisi penjelasan singkat dan source code.
 
   ### UpdateTitle
 
-  - [x] PUT http://localhost:8080/todo/updateTitle
+  - [x] PUT http://localhost:8080/api/v1/user/updateTitle
         Contoh:
         {
         "title": "title",
@@ -139,7 +149,7 @@ yang telah anda buat berisi penjelasan singkat dan source code.
 
   ### UpdateTitle
 
-  - [x] PUT http://localhost:8080/todo/updateStatus
+  - [x] PUT http://localhost:8080/api/v1/user/updateStatus
         Contoh:
         {
         "completed": true
@@ -147,7 +157,7 @@ yang telah anda buat berisi penjelasan singkat dan source code.
 
   ### Delete
 
-  - [x] DELETE http://localhost:8080/todo/delete
+  - [x] DELETE http://localhost:8080/api/v1/user/delete
         Contoh:
         {
         "id": 1
@@ -218,4 +228,4 @@ yang telah anda buat berisi penjelasan singkat dan source code.
             }
 
 # Dokumentasi Swagger
-https://cdp-mock-test-production-7724.up.railway.app/docs
+https://cdp-mock-test-production-ddce.up.railway.app/docs/
