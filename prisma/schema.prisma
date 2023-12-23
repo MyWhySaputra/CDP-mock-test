@@ -21,10 +21,10 @@ model user {
   createAt    DateTime  @default(now())
   updateAt    DateTime? @default(now())
   deletedAt   DateTime?
-  tasks      Task[]
+  tasks      task[]
 }
 
-model Task {
+model task {
   id         Int      @id @default(autoincrement())
   userId     Int
   title      String
