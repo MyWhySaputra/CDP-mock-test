@@ -1,4 +1,4 @@
-const { ResponseTemplate } = require("../helper/template_helper")
+const { ResponseTemplate } = require("../helper/template.helper")
 const { PrismaClient } = require("@prisma/client")
 
 const prisma = new PrismaClient()
@@ -12,7 +12,14 @@ async function createTask(req, res) {
             title: title,
             completed: false,
             userId: req.user.id,
-        },
+            },
+        select: {
+            id: true,
+            title: true,
+            completed: true,
+            created_at: true,
+            updated_at: true,
+        }
         })
 
         let resp = ResponseTemplate(data, "create title success", null, 200);
@@ -33,9 +40,17 @@ async function getTasks(req, res) {
         where: {
             userId: req.user.id,
             deleted_at: null,
-        },
+            },
+        select: {
+            id: true,
+            title: true,
+            completed: true,
+            created_at: true,
+            updated_at: true,
+        }
         })
-        let resp = ResponseTemplate(data, "get datas success", null, 200)
+
+        let resp = ResponseTemplate(data, "get data success", null, 200)
         res.status(200).json(resp)
         return
 
@@ -54,10 +69,17 @@ async function updateTitleTask(req, res) {
         const data = await prisma.task.update({
         where: {
             id: parseInt(id),
-        },
+            },
         data: {
             title: title,
-        },
+            },
+        select: {
+            id: true,
+            title: true,
+            completed: true,
+            created_at: true,
+            updated_at: true,
+        }
         })
         let resp = ResponseTemplate(data, "update title success", null, 200)
         res.status(200).json(resp)
@@ -81,8 +103,15 @@ async function updateStatusTask(req, res) {
         },
         data: {
             completed: true,
-        },
-        });
+            },
+        select: {
+            id: true,
+            title: true,
+            completed: true,
+            created_at: true,
+            updated_at: true,
+        }
+        })
         let resp = ResponseTemplate(data, "update status success", null, 200);
         res.status(200).json(resp);
         return;
