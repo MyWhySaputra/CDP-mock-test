@@ -53,7 +53,7 @@ async function register(req, res) {
             to: payload.email, 
             subject: "Verification your email", 
             text: `Click here to verify your email`,
-            html: `<a href="${process.env.BASE_URL}api/v1/auth/verify-email?email=${payload.email}">Click here to verify your email</a>`,
+            html: `<a href="${process.env.BASE_URL}/api/v1/auth/verify-email?email=${payload.email}">Click here to verify your email</a>`,
         })
 
         const userView = await prisma.user.findUnique({
@@ -96,6 +96,12 @@ async function login(req, res) {
 
         if (checkUser === null) {
             let resp = ResponseTemplate(null, 'email is not found or incorrect', null, 400)
+            res.status(400).json(resp)
+            return
+        }
+
+        if (!checkUser.is_verified) {
+            let resp = ResponseTemplate(null, 'email is not verified', null, 400)
             res.status(400).json(resp)
             return
         }
